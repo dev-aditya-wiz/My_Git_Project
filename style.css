@@ -161,3 +161,27 @@ main {
         grid-template-columns: 1fr;
     }
 }
+
+.stories {
+    display: flex;
+    gap: 20px;
+    padding: 20px 0;
+    overflow-x: auto;
+}
+
+.story {
+    text-align: center;
+    min-width: 80px;
+}
+
+.story-image {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    margin-bottom: 5px;
+}
