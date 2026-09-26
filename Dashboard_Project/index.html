@@ -4,85 +4,1069 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Student Dashboard</title>
+    <meta
+        name="description"
+        content="Student dashboard for managing courses, assignments, attendance and academic performance."
+    >
 
-    <link rel="stylesheet" href="02-style.css">
+    <title>StudentOS — Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <nav class="navbar">
+    <!-- =========================
+         MOBILE OVERLAY
+    ========================== -->
 
-        <div class="logo">
-            <div class="logo-icon">🎓</div>
-            <span>StudentHub</span>
-        </div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-        <div class="nav-links">
 
-            <a href="#" class="nav-item active">
-                <span>🏠</span>
-                Dashboard
-            </a>
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
 
-            <a href="#" class="nav-item">
-                <span>📚</span>
-                Courses
-            </a>
+    <aside class="sidebar" id="sidebar">
 
-            <a href="#" class="nav-item">
-                <span>📝</span>
-                Assignments
-            </a>
+        <!-- Logo -->
 
-            <a href="#" class="nav-item">
-                <span>📅</span>
-                Attendance
-            </a>
+        <div class="brand">
 
-            <a href="#" class="nav-item">
-                <span>📊</span>
-                Grades
-            </a>
+            <div class="brand-mark">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
 
-        </div>
-
-        <div class="nav-right">
-
-            <button class="notification">
-                🔔
-                <span class="notification-dot"></span>
-            </button>
-
-            <div class="profile">
-
-                <div class="profile-image">
-                    A
-                </div>
-
-                <div class="profile-info">
-                    <strong>Aditya</strong>
-                    <small>Student</small>
-                </div>
-
-                <span class="arrow">⌄</span>
-
+            <div class="brand-text">
+                <strong>Student<span>OS</span></strong>
+                <small>ACADEMIC SYSTEM</small>
             </div>
 
         </div>
 
-    </nav>
+
+        <!-- Navigation -->
+
+        <nav class="navigation">
+
+            <p class="nav-label">MAIN MENU</p>
+
+            <a href="#dashboard" class="nav-link active">
+                <span class="nav-icon">⌂</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="#courses" class="nav-link">
+                <span class="nav-icon">▣</span>
+                <span>My Courses</span>
+                <span class="nav-count">6</span>
+            </a>
+
+            <a href="#assignments" class="nav-link">
+                <span class="nav-icon">✓</span>
+                <span>Assignments</span>
+                <span class="nav-count alert">3</span>
+            </a>
+
+            <a href="#attendance" class="nav-link">
+                <span class="nav-icon">◷</span>
+                <span>Attendance</span>
+            </a>
+
+            <a href="#performance" class="nav-link">
+                <span class="nav-icon">↗</span>
+                <span>Performance</span>
+            </a>
 
 
-    <main class="content">
+            <p class="nav-label second-label">PERSONAL</p>
 
-        <h1>Welcome back, Aditya 👋</h1>
+            <a href="#schedule" class="nav-link">
+                <span class="nav-icon">□</span>
+                <span>Schedule</span>
+            </a>
 
-        <p>
-            Here's what's happening with your studies today.
-        </p>
+            <a href="#notifications" class="nav-link">
+                <span class="nav-icon">♢</span>
+                <span>Notifications</span>
+                <span class="notification-mini"></span>
+            </a>
+
+            <a href="#settings" class="nav-link">
+                <span class="nav-icon">⚙</span>
+                <span>Settings</span>
+            </a>
+
+        </nav>
+
+
+        <!-- Sidebar Bottom -->
+
+        <div class="sidebar-bottom">
+
+            <div class="system-status">
+
+                <span class="status-dot"></span>
+
+                <div>
+                    <strong>System Online</strong>
+                    <small>All services operational</small>
+                </div>
+
+            </div>
+
+            <button class="logout-btn" id="logoutBtn">
+                <span>↪</span>
+                Sign out
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <button class="mobile-menu" id="menuBtn" aria-label="Open menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+
+            <!-- Search -->
+
+            <div class="search-box">
+
+                <span class="search-icon">⌕</span>
+
+                <input
+                    type="search"
+                    id="searchInput"
+                    placeholder="Search courses, assignments..."
+                >
+
+                <kbd>⌘ K</kbd>
+
+            </div>
+
+
+            <!-- Topbar Right -->
+
+            <div class="topbar-actions">
+
+                <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">
+                    ◐
+                </button>
+
+                <button class="icon-btn notification-btn" id="notificationBtn">
+                    ♢
+                    <span></span>
+                </button>
+
+
+                <div class="profile-menu" id="profileMenu">
+
+                    <div class="avatar">
+                        AS
+                    </div>
+
+                    <div class="profile-details">
+                        <strong>Aditya Sharma</strong>
+                        <small>Computer Science</small>
+                    </div>
+
+                    <span class="profile-arrow">⌄</span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- PAGE CONTENT -->
+
+        <div class="page-content" id="dashboard">
+
+
+            <!-- =========================
+                 WELCOME SECTION
+            ========================== -->
+
+            <section class="welcome-section">
+
+                <div>
+
+                    <p class="eyebrow">
+                        <span class="live-dot"></span>
+                        STUDENT PORTAL
+                    </p>
+
+                    <h1>
+                        Good afternoon,
+                        <span>Aditya.</span>
+                    </h1>
+
+                    <p class="welcome-text">
+                        Here's your academic overview for today.
+                    </p>
+
+                </div>
+
+                <div class="date-display">
+                    <span>◷</span>
+                    <div>
+                        <strong id="currentDate">Saturday, September 26</strong>
+                        <small id="currentTime">02:20 PM</small>
+                    </div>
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 STATS
+            ========================== -->
+
+            <section class="stats-grid">
+
+                <article class="stat-card">
+
+                    <div class="stat-top">
+                        <span class="stat-icon green">▣</span>
+
+                        <span class="trend positive">
+                            ↑ 8.2%
+                        </span>
+                    </div>
+
+                    <p>Overall GPA</p>
+
+                    <h2>8.74</h2>
+
+                    <div class="progress-line">
+                        <span style="width: 87.4%"></span>
+                    </div>
+
+                    <small>Excellent academic standing</small>
+
+                </article>
+
+
+                <article class="stat-card">
+
+                    <div class="stat-top">
+                        <span class="stat-icon blue">◷</span>
+
+                        <span class="trend positive">
+                            ↑ 2.4%
+                        </span>
+                    </div>
+
+                    <p>Attendance</p>
+
+                    <h2>92.6<span class="unit">%</span></h2>
+
+                    <div class="progress-line blue-line">
+                        <span style="width: 92.6%"></span>
+                    </div>
+
+                    <small>Above required 75% minimum</small>
+
+                </article>
+
+
+                <article class="stat-card">
+
+                    <div class="stat-top">
+                        <span class="stat-icon purple">✓</span>
+
+                        <span class="trend neutral">
+                            This week
+                        </span>
+                    </div>
+
+                    <p>Assignments</p>
+
+                    <h2>17<span class="muted-number">/20</span></h2>
+
+                    <div class="progress-line purple-line">
+                        <span style="width: 85%"></span>
+                    </div>
+
+                    <small>3 assignments pending</small>
+
+                </article>
+
+
+                <article class="stat-card">
+
+                    <div class="stat-top">
+                        <span class="stat-icon orange">↗</span>
+
+                        <span class="trend positive">
+                            ↑ 4.1%
+                        </span>
+                    </div>
+
+                    <p>Avg. Score</p>
+
+                    <h2>87<span class="unit">%</span></h2>
+
+                    <div class="progress-line orange-line">
+                        <span style="width: 87%"></span>
+                    </div>
+
+                    <small>Across all active courses</small>
+
+                </article>
+
+            </section>
+
+
+            <!-- =========================
+                 MAIN GRID
+            ========================== -->
+
+            <section class="dashboard-grid">
+
+
+                <!-- PERFORMANCE -->
+
+                <article class="panel performance-panel" id="performance">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <p class="panel-label">ACADEMIC ANALYTICS</p>
+                            <h2>Performance Overview</h2>
+                        </div>
+
+                        <select id="performanceSelect">
+                            <option>Last 6 months</option>
+                            <option>Last 3 months</option>
+                            <option>This semester</option>
+                        </select>
+
+                    </div>
+
+
+                    <div class="chart-wrapper">
+
+                        <div class="chart-y-axis">
+                            <span>100</span>
+                            <span>80</span>
+                            <span>60</span>
+                            <span>40</span>
+                            <span>20</span>
+                            <span>0</span>
+                        </div>
+
+                        <div class="chart-area">
+
+                            <div class="grid-lines">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+
+                            <svg
+                                class="performance-chart"
+                                viewBox="0 0 600 230"
+                                preserveAspectRatio="none"
+                            >
+
+                                <defs>
+
+                                    <linearGradient
+                                        id="chartGradient"
+                                        x1="0"
+                                        y1="0"
+                                        x2="0"
+                                        y2="1"
+                                    >
+                                        <stop
+                                            offset="0%"
+                                            stop-color="#76ff03"
+                                            stop-opacity="0.28"
+                                        />
+
+                                        <stop
+                                            offset="100%"
+                                            stop-color="#76ff03"
+                                            stop-opacity="0"
+                                        />
+                                    </linearGradient>
+
+                                </defs>
+
+
+                                <path
+                                    class="chart-fill"
+                                    d="
+                                    M0,165
+                                    C45,155 60,145 100,148
+                                    C140,151 150,130 200,135
+                                    C245,140 260,105 300,110
+                                    C345,115 360,95 400,102
+                                    C445,109 455,65 500,76
+                                    C540,86 555,52 600,45
+                                    L600,230
+                                    L0,230
+                                    Z
+                                    "
+                                ></path>
+
+
+                                <path
+                                    class="chart-line"
+                                    d="
+                                    M0,165
+                                    C45,155 60,145 100,148
+                                    C140,151 150,130 200,135
+                                    C245,140 260,105 300,110
+                                    C345,115 360,95 400,102
+                                    C445,109 455,65 500,76
+                                    C540,86 555,52 600,45
+                                    "
+                                ></path>
+
+                                <circle cx="100" cy="148" r="4"></circle>
+                                <circle cx="200" cy="135" r="4"></circle>
+                                <circle cx="300" cy="110" r="4"></circle>
+                                <circle cx="400" cy="102" r="4"></circle>
+                                <circle cx="500" cy="76" r="4"></circle>
+                                <circle cx="600" cy="45" r="5"></circle>
+
+                            </svg>
+
+                            <div class="chart-x-axis">
+                                <span>Apr</span>
+                                <span>May</span>
+                                <span>Jun</span>
+                                <span>Jul</span>
+                                <span>Aug</span>
+                                <span>Sep</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="chart-footer">
+
+                        <div class="legend">
+                            <span class="legend-dot"></span>
+                            <span>Average Score</span>
+                        </div>
+
+                        <strong>
+                            +12.8% <small>vs previous period</small>
+                        </strong>
+
+                    </div>
+
+                </article>
+
+
+                <!-- UPCOMING -->
+
+                <article class="panel upcoming-panel" id="schedule">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <p class="panel-label">SCHEDULE</p>
+                            <h2>Upcoming</h2>
+                        </div>
+
+                        <button class="text-btn">
+                            View all →
+                        </button>
+
+                    </div>
+
+
+                    <div class="schedule-list">
+
+                        <div class="schedule-item">
+
+                            <div class="time">
+                                <strong>10:00</strong>
+                                <span>AM</span>
+                            </div>
+
+                            <div class="schedule-line green-line"></div>
+
+                            <div class="schedule-info">
+                                <strong>Web Development</strong>
+                                <span>Room A-204 · Prof. Patel</span>
+                            </div>
+
+                            <span class="schedule-tag">CLASS</span>
+
+                        </div>
+
+
+                        <div class="schedule-item">
+
+                            <div class="time">
+                                <strong>01:30</strong>
+                                <span>PM</span>
+                            </div>
+
+                            <div class="schedule-line blue-line"></div>
+
+                            <div class="schedule-info">
+                                <strong>Data Structures</strong>
+                                <span>Lab 03 · Dr. Mehta</span>
+                            </div>
+
+                            <span class="schedule-tag blue-tag">LAB</span>
+
+                        </div>
+
+
+                        <div class="schedule-item">
+
+                            <div class="time">
+                                <strong>04:00</strong>
+                                <span>PM</span>
+                            </div>
+
+                            <div class="schedule-line purple-line"></div>
+
+                            <div class="schedule-info">
+                                <strong>UI/UX Design</strong>
+                                <span>Studio 02 · Ms. Shah</span>
+                            </div>
+
+                            <span class="schedule-tag purple-tag">CLASS</span>
+
+                        </div>
+
+
+                        <div class="schedule-item">
+
+                            <div class="time">
+                                <strong>06:30</strong>
+                                <span>PM</span>
+                            </div>
+
+                            <div class="schedule-line orange-line"></div>
+
+                            <div class="schedule-info">
+                                <strong>Project Meeting</strong>
+                                <span>Innovation Hub · Team 04</span>
+                            </div>
+
+                            <span class="schedule-tag orange-tag">EVENT</span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+            </section>
+
+
+            <!-- =========================
+                 COURSES
+            ========================== -->
+
+            <section class="section" id="courses">
+
+                <div class="section-header">
+
+                    <div>
+                        <p class="panel-label">LEARNING</p>
+                        <h2>My Courses</h2>
+                    </div>
+
+                    <button class="outline-btn">
+                        View all courses →
+                    </button>
+
+                </div>
+
+
+                <div class="course-grid">
+
+
+                    <article class="course-card">
+
+                        <div class="course-top">
+
+                            <div class="course-code green-bg">
+                                CS
+                            </div>
+
+                            <span class="course-menu">•••</span>
+
+                        </div>
+
+                        <p class="course-id">CS301 · CORE</p>
+
+                        <h3>Data Structures & Algorithms</h3>
+
+                        <p class="course-teacher">
+                            Dr. Raj Mehta
+                        </p>
+
+                        <div class="course-progress">
+
+                            <div class="progress-info">
+                                <span>Progress</span>
+                                <strong>82%</strong>
+                            </div>
+
+                            <div class="progress-bar">
+                                <span style="width: 82%"></span>
+                            </div>
+
+                        </div>
+
+                        <div class="course-footer">
+                            <span>18 / 22 modules</span>
+                            <button>Continue →</button>
+                        </div>
+
+                    </article>
+
+
+                    <article class="course-card">
+
+                        <div class="course-top">
+
+                            <div class="course-code blue-bg">
+                                WD
+                            </div>
+
+                            <span class="course-menu">•••</span>
+
+                        </div>
+
+                        <p class="course-id">CS305 · CORE</p>
+
+                        <h3>Full Stack Web Development</h3>
+
+                        <p class="course-teacher">
+                            Prof. Neha Patel
+                        </p>
+
+                        <div class="course-progress">
+
+                            <div class="progress-info">
+                                <span>Progress</span>
+                                <strong>74%</strong>
+                            </div>
+
+                            <div class="progress-bar blue-progress">
+                                <span style="width: 74%"></span>
+                            </div>
+
+                        </div>
+
+                        <div class="course-footer">
+                            <span>15 / 20 modules</span>
+                            <button>Continue →</button>
+                        </div>
+
+                    </article>
+
+
+                    <article class="course-card">
+
+                        <div class="course-top">
+
+                            <div class="course-code purple-bg">
+                                UI
+                            </div>
+
+                            <span class="course-menu">•••</span>
+
+                        </div>
+
+                        <p class="course-id">DES201 · ELECTIVE</p>
+
+                        <h3>UI/UX & Visual Design</h3>
+
+                        <p class="course-teacher">
+                            Ms. Riya Shah
+                        </p>
+
+                        <div class="course-progress">
+
+                            <div class="progress-info">
+                                <span>Progress</span>
+                                <strong>91%</strong>
+                            </div>
+
+                            <div class="progress-bar purple-progress">
+                                <span style="width: 91%"></span>
+                            </div>
+
+                        </div>
+
+                        <div class="course-footer">
+                            <span>20 / 22 modules</span>
+                            <button>Continue →</button>
+                        </div>
+
+                    </article>
+
+
+                    <article class="course-card">
+
+                        <div class="course-top">
+
+                            <div class="course-code orange-bg">
+                                DB
+                            </div>
+
+                            <span class="course-menu">•••</span>
+
+                        </div>
+
+                        <p class="course-id">CS310 · CORE</p>
+
+                        <h3>Database Management Systems</h3>
+
+                        <p class="course-teacher">
+                            Dr. Amit Shah
+                        </p>
+
+                        <div class="course-progress">
+
+                            <div class="progress-info">
+                                <span>Progress</span>
+                                <strong>68%</strong>
+                            </div>
+
+                            <div class="progress-bar orange-progress">
+                                <span style="width: 68%"></span>
+                            </div>
+
+                        </div>
+
+                        <div class="course-footer">
+                            <span>14 / 21 modules</span>
+                            <button>Continue →</button>
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 BOTTOM GRID
+            ========================== -->
+
+            <section class="bottom-grid">
+
+
+                <!-- ASSIGNMENTS -->
+
+                <article class="panel assignments-panel" id="assignments">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <p class="panel-label">TASK MANAGER</p>
+                            <h2>Recent Assignments</h2>
+                        </div>
+
+                        <button class="text-btn">
+                            View all →
+                        </button>
+
+                    </div>
+
+
+                    <div class="assignment-list">
+
+                        <div class="assignment">
+
+                            <div class="assignment-icon green">
+                                &lt;/&gt;
+                            </div>
+
+                            <div class="assignment-info">
+                                <strong>Responsive Portfolio</strong>
+                                <span>Web Development · Due Sep 28</span>
+                            </div>
+
+                            <span class="assignment-status pending">
+                                PENDING
+                            </span>
+
+                        </div>
+
+
+                        <div class="assignment">
+
+                            <div class="assignment-icon blue">
+                                DB
+                            </div>
+
+                            <div class="assignment-info">
+                                <strong>SQL Query Optimization</strong>
+                                <span>Database Systems · Due Sep 29</span>
+                            </div>
+
+                            <span class="assignment-status submitted">
+                                SUBMITTED
+                            </span>
+
+                        </div>
+
+
+                        <div class="assignment">
+
+                            <div class="assignment-icon purple">
+                                A+
+                            </div>
+
+                            <div class="assignment-info">
+                                <strong>Algorithm Analysis</strong>
+                                <span>Data Structures · Due Oct 01</span>
+                            </div>
+
+                            <span class="assignment-status pending">
+                                PENDING
+                            </span>
+
+                        </div>
+
+
+                        <div class="assignment">
+
+                            <div class="assignment-icon orange">
+                                UX
+                            </div>
+
+                            <div class="assignment-info">
+                                <strong>Mobile App Wireframes</strong>
+                                <span>UI/UX Design · Due Oct 03</span>
+                            </div>
+
+                            <span class="assignment-status graded">
+                                GRADED
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- ATTENDANCE -->
+
+                <article class="panel attendance-panel" id="attendance">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <p class="panel-label">ATTENDANCE</p>
+                            <h2>This Semester</h2>
+                        </div>
+
+                        <button class="icon-small">•••</button>
+
+                    </div>
+
+
+                    <div class="attendance-content">
+
+                        <div class="attendance-circle">
+
+                            <div class="circle-inner">
+                                <strong>92.6%</strong>
+                                <span>Overall</span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="attendance-details">
+
+                            <div>
+                                <span>
+                                    <i class="dot green-dot"></i>
+                                    Present
+                                </span>
+
+                                <strong>75</strong>
+                            </div>
+
+                            <div>
+                                <span>
+                                    <i class="dot orange-dot"></i>
+                                    Late
+                                </span>
+
+                                <strong>4</strong>
+                            </div>
+
+                            <div>
+                                <span>
+                                    <i class="dot red-dot"></i>
+                                    Absent
+                                </span>
+
+                                <strong>6</strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="attendance-warning">
+                        <span>!</span>
+                        <p>
+                            Keep attendance above <strong>75%</strong>
+                            to remain eligible for exams.
+                        </p>
+                    </div>
+
+                </article>
+
+
+                <!-- NOTIFICATIONS -->
+
+                <article class="panel notifications-panel" id="notifications">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <p class="panel-label">UPDATES</p>
+                            <h2>Notifications</h2>
+                        </div>
+
+                        <span class="unread">3 new</span>
+
+                    </div>
+
+
+                    <div class="notification-list">
+
+                        <div class="notification-item unread-item">
+
+                            <span class="notification-icon green-icon">
+                                ✓
+                            </span>
+
+                            <div>
+                                <strong>Assignment graded</strong>
+                                <p>Your UI/UX assignment received 92/100.</p>
+                                <small>15 minutes ago</small>
+                            </div>
+
+                        </div>
+
+
+                        <div class="notification-item unread-item">
+
+                            <span class="notification-icon blue-icon">
+                                ◷
+                            </span>
+
+                            <div>
+                                <strong>Class reminder</strong>
+                                <p>Data Structures starts in 30 minutes.</p>
+                                <small>1 hour ago</small>
+                            </div>
+
+                        </div>
+
+
+                        <div class="notification-item">
+
+                            <span class="notification-icon purple-icon">
+                                ◆
+                            </span>
+
+                            <div>
+                                <strong>New course material</strong>
+                                <p>Professor uploaded Chapter 7 notes.</p>
+                                <small>Yesterday</small>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- =========================
+                 FOOTER
+            ========================== -->
+
+            <footer class="footer">
+
+                <span>© 2026 StudentOS</span>
+
+                <div>
+                    <a href="#">Help Center</a>
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                </div>
+
+                <span class="footer-status">
+                    <i></i> Connected
+                </span>
+
+            </footer>
+
+        </div>
 
     </main>
+
+
+    <!-- =========================
+         TOAST
+    ========================== -->
+
+    <div class="toast" id="toast">
+
+        <span class="toast-icon">✓</span>
+
+        <div>
+            <strong id="toastTitle">Success</strong>
+            <p id="toastMessage">Action completed.</p>
+        </div>
+
+        <button id="toastClose">×</button>
+
+    </div>
+
+
+    <script src="script.js"></script>
 
 </body>
 </html>
