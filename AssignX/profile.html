@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Profile — AssignX</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <style>
+        .profile-page {
+            padding: 30px 32px 50px;
+            max-width: 1000px;
+        }
+
+        .profile-heading {
+            margin-bottom: 24px;
+        }
+
+        .profile-heading h1 {
+            margin: 0;
+            font-size: 28px;
+            letter-spacing: -1px;
+        }
+
+        .profile-heading p {
+            margin: 7px 0 0;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .profile-layout {
+            display: grid;
+            grid-template-columns: 260px minmax(0, 1fr);
+            gap: 18px;
+        }
+
+        .profile-card {
+            padding: 24px;
+        }
+
+        .profile-summary {
+            text-align: center;
+        }
+
+        .large-avatar {
+            width: 84px;
+            height: 84px;
+
+            display: grid;
+            place-items: center;
+
+            margin: 0 auto 15px;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #76b900,
+                    #3d6100
+                );
+
+            border-radius: 50%;
+
+            font-size: 25px;
+            font-weight: 800;
+
+            box-shadow:
+                0 0 30px rgba(118,185,0,0.18);
+        }
+
+        .profile-summary h2 {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .profile-summary p {
+            margin: 6px 0 0;
+            color: var(--muted);
+            font-size: 10px;
+        }
+
+        .student-id {
+            display: inline-block;
+
+            margin-top: 14px;
+            padding: 6px 9px;
+
+            color: var(--green);
+
+            background: rgba(118,185,0,0.08);
+
+            border: 1px solid rgba(118,185,0,0.14);
+            border-radius: 99px;
+
+            font-size: 9px;
+            font-weight: 700;
+        }
+
+        .profile-info {
+            padding: 24px;
+        }
+
+        .profile-info-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 24px;
+        }
+
+        .profile-info-header h2 {
+            margin: 0;
+            font-size: 15px;
+        }
+
+        .profile-fields {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .readonly-input {
+            color: #aaa;
+            background: rgba(255,255,255,0.025);
+        }
+
+        @media (max-width: 750px) {
+            .profile-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .profile-page {
+                padding: 22px 16px 40px;
+            }
+
+            .profile-fields {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="page-shell">
+
+    <aside class="sidebar">
+
+        <a href="dashboard.html" class="sidebar-brand">
+            <span class="sidebar-brand-mark">A</span>
+            <span class="sidebar-brand-text">AssignX</span>
+        </a>
+
+        <div class="sidebar-section-title">Workspace</div>
+
+        <nav class="sidebar-nav">
+
+            <a href="dashboard.html" class="sidebar-link">
+                <span class="nav-icon">⌂</span>
+                Dashboard
+            </a>
+
+            <a href="assignments.html" class="sidebar-link">
+                <span class="nav-icon">▣</span>
+                Assignments
+            </a>
+
+            <a href="calendar.html" class="sidebar-link">
+                <span class="nav-icon">□</span>
+                Calendar
+            </a>
+
+            <a href="history.html" class="sidebar-link">
+                <span class="nav-icon">◷</span>
+                History
+            </a>
+
+            <a href="notifications.html" class="sidebar-link">
+                <span class="nav-icon">◉</span>
+                Notifications
+            </a>
+
+            <a href="profile.html" class="sidebar-link active">
+                <span class="nav-icon">○</span>
+                Profile
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <main class="main-content">
+
+        <header class="top-header">
+
+            <div class="header-left">
+
+                <details class="mobile-nav">
+                    <summary class="header-icon-button">☰</summary>
+
+                    <div class="mobile-menu">
+                        <a href="dashboard.html">Dashboard</a>
+                        <a href="assignments.html">Assignments</a>
+                        <a href="calendar.html">Calendar</a>
+                        <a href="history.html">History</a>
+                        <a href="notifications.html">Notifications</a>
+                        <a class="active" href="profile.html">Profile</a>
+                    </div>
+                </details>
+
+                <div class="header-title">
+                    <h1>Profile</h1>
+                    <p>Manage your student information.</p>
+                </div>
+
+            </div>
+
+            <div class="header-actions">
+                <div class="avatar">AK</div>
+            </div>
+
+        </header>
+
+
+        <section class="profile-page">
+
+            <div class="profile-heading">
+                <h1>My Profile</h1>
+                <p>Your AssignX student profile.</p>
+            </div>
+
+
+            <div class="profile-layout">
+
+                <section class="card profile-card profile-summary">
+
+                    <div class="large-avatar">
+                        AK
+                    </div>
+
+                    <h2>Aditya Kumar Sharma</h2>
+
+                    <p>
+                        Computer Science & Engineering
+                    </p>
+
+                    <span class="student-id">
+                        CSE2026XXXX
+                    </span>
+
+                </section>
+
+
+                <section class="card profile-info">
+
+                    <div class="profile-info-header">
+
+                        <h2>Personal Information</h2>
+
+                        <button class="btn btn-primary">
+                            Edit Profile
+                        </button>
+
+                    </div>
+
+
+                    <div class="profile-fields">
+
+                        <div class="form-group">
+
+                            <label for="name">
+                                Full Name
+                            </label>
+
+                            <input
+                                id="name"
+                                class="input readonly-input"
+                                type="text"
+                                value="Aditya Kumar Sharma"
+                                readonly
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="email">
+                                Student Email
+                            </label>
+
+                            <input
+                                id="email"
+                                class="input readonly-input"
+                                type="email"
+                                value="student@example.com"
+                                readonly
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="course">
+                                Course
+                            </label>
+
+                            <input
+                                id="course"
+                                class="input readonly-input"
+                                type="text"
+                                value="Computer Science & Engineering"
+                                readonly
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="semester">
+                                Semester
+                            </label>
+
+                            <input
+                                id="semester"
+                                class="input readonly-input"
+                                type="text"
+                                value="Semester 5"
+                                readonly
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="student-id">
+                                Student ID
+                            </label>
+
+                            <input
+                                id="student-id"
+                                class="input readonly-input"
+                                type="text"
+                                value="CSE2026XXXX"
+                                readonly
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="university">
+                                University
+                            </label>
+
+                            <input
+                                id="university"
+                                class="input readonly-input"
+                                type="text"
+                                value="ABC University"
+                                readonly
+                            >
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+</body>
+</html>

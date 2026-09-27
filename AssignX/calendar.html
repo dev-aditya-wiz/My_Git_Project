@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Calendar — AssignX</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <style>
+        .calendar-page {
+            padding: 30px 32px 50px;
+        }
+
+        .calendar-heading {
+            margin-bottom: 22px;
+        }
+
+        .calendar-heading h1 {
+            margin: 0;
+            font-size: 28px;
+            letter-spacing: -1px;
+        }
+
+        .calendar-heading p {
+            margin: 7px 0 0;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .calendar-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 290px;
+            gap: 18px;
+        }
+
+        .calendar-card {
+            padding: 22px;
+        }
+
+        .calendar-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .calendar-top h2 {
+            margin: 0;
+            font-size: 17px;
+        }
+
+        .month-actions {
+            display: flex;
+            gap: 7px;
+        }
+
+        .month-button {
+            width: 32px;
+            height: 32px;
+
+            display: grid;
+            place-items: center;
+
+            color: #aaa;
+            background: rgba(255,255,255,0.04);
+
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+        }
+
+        .weekday {
+            padding: 10px 5px;
+
+            color: #666;
+            font-size: 9px;
+            font-weight: 700;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .calendar-day {
+            min-height: 82px;
+            padding: 8px;
+
+            border-top: 1px solid var(--border);
+            border-right: 1px solid var(--border);
+
+            transition: background 0.2s ease;
+        }
+
+        .calendar-day:nth-child(7n) {
+            border-right: 0;
+        }
+
+        .calendar-day:hover {
+            background: rgba(118,185,0,0.035);
+        }
+
+        .calendar-number {
+            display: inline-flex;
+            width: 25px;
+            height: 25px;
+
+            align-items: center;
+            justify-content: center;
+
+            color: #aaa;
+
+            font-size: 10px;
+            font-weight: 600;
+
+            border-radius: 50%;
+        }
+
+        .today .calendar-number {
+            color: #050505;
+            background: var(--green);
+        }
+
+        .other-month .calendar-number {
+            color: #3f3f3f;
+        }
+
+        .calendar-event {
+            margin-top: 5px;
+            padding: 5px 6px;
+
+            color: #b6e568;
+            background: rgba(118,185,0,0.1);
+
+            border-left: 2px solid var(--green);
+            border-radius: 4px;
+
+            font-size: 8px;
+            font-weight: 600;
+
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .event-warning {
+            color: #fbbf24;
+            background: rgba(245,158,11,0.08);
+            border-left-color: #f59e0b;
+        }
+
+        .upcoming-card {
+            padding: 22px;
+        }
+
+        .upcoming-card h3 {
+            margin: 0 0 18px;
+            font-size: 14px;
+        }
+
+        .calendar-event-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .calendar-event-item {
+            padding: 13px;
+
+            background: rgba(255,255,255,0.025);
+
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+
+        .calendar-event-item strong {
+            display: block;
+            font-size: 11px;
+        }
+
+        .calendar-event-item span {
+            display: block;
+            margin-top: 5px;
+            color: var(--muted);
+            font-size: 9px;
+        }
+
+        @media (max-width: 900px) {
+            .calendar-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .calendar-page {
+                padding: 22px 12px 40px;
+            }
+
+            .calendar-day {
+                min-height: 60px;
+                padding: 4px;
+            }
+
+            .calendar-event {
+                font-size: 7px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="page-shell">
+
+    <aside class="sidebar">
+
+        <a href="dashboard.html" class="sidebar-brand">
+            <span class="sidebar-brand-mark">A</span>
+            <span class="sidebar-brand-text">AssignX</span>
+        </a>
+
+        <div class="sidebar-section-title">Workspace</div>
+
+        <nav class="sidebar-nav">
+
+            <a href="dashboard.html" class="sidebar-link">
+                <span class="nav-icon">⌂</span>
+                Dashboard
+            </a>
+
+            <a href="assignments.html" class="sidebar-link">
+                <span class="nav-icon">▣</span>
+                Assignments
+            </a>
+
+            <a href="calendar.html" class="sidebar-link active">
+                <span class="nav-icon">□</span>
+                Calendar
+            </a>
+
+            <a href="history.html" class="sidebar-link">
+                <span class="nav-icon">◷</span>
+                History
+            </a>
+
+            <a href="notifications.html" class="sidebar-link">
+                <span class="nav-icon">◉</span>
+                Notifications
+            </a>
+
+            <a href="profile.html" class="sidebar-link">
+                <span class="nav-icon">○</span>
+                Profile
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <main class="main-content">
+
+        <header class="top-header">
+
+            <div class="header-left">
+
+                <details class="mobile-nav">
+                    <summary class="header-icon-button">☰</summary>
+
+                    <div class="mobile-menu">
+                        <a href="dashboard.html">Dashboard</a>
+                        <a href="assignments.html">Assignments</a>
+                        <a class="active" href="calendar.html">Calendar</a>
+                        <a href="history.html">History</a>
+                        <a href="notifications.html">Notifications</a>
+                        <a href="profile.html">Profile</a>
+                    </div>
+                </details>
+
+                <div class="header-title">
+                    <h1>Calendar</h1>
+                    <p>Your assignment deadlines at a glance.</p>
+                </div>
+
+            </div>
+
+            <div class="header-actions">
+                <div class="avatar">AK</div>
+            </div>
+
+        </header>
+
+
+        <section class="calendar-page">
+
+            <div class="calendar-heading">
+                <h1>September 2026</h1>
+                <p>Track upcoming assignment deadlines.</p>
+            </div>
+
+
+            <div class="calendar-layout">
+
+                <section class="card calendar-card">
+
+                    <div class="calendar-top">
+
+                        <h2>September 2026</h2>
+
+                        <div class="month-actions">
+                            <button class="month-button">‹</button>
+                            <button class="month-button">›</button>
+                        </div>
+
+                    </div>
+
+
+                    <div class="calendar-grid">
+
+                        <div class="weekday">Sun</div>
+                        <div class="weekday">Mon</div>
+                        <div class="weekday">Tue</div>
+                        <div class="weekday">Wed</div>
+                        <div class="weekday">Thu</div>
+                        <div class="weekday">Fri</div>
+                        <div class="weekday">Sat</div>
+
+
+                        <div class="calendar-day other-month">
+                            <span class="calendar-number">30</span>
+                        </div>
+
+                        <div class="calendar-day">
+                            <span class="calendar-number">1</span>
+                        </div>
+
+                        <div class="calendar-day">
+                            <span class="calendar-number">2</span>
+                        </div>
+
+                        <div class="calendar-day">
+                            <span class="calendar-number">3</span>
+                        </div>
+
+                        <div class="calendar-day">
+                            <span class="calendar-number">4</span>
+                        </div>
+
+                        <div class="calendar-day">
+                            <span class="calendar-number">5</span>
+                        </div>
+
+                        <div class="calendar-day">
+                            <span class="calendar-number">6</span>
+                        </div>
+
+
+                        <div class="calendar-day">
+                            <span class="calendar-number">7</span>
+                        </div>
+
+                        <div class="calendar-day">
+                            <span class="calendar-number">8</span>
+                        </div>
+
+                        <div class="calendar-day">
+                            <span class="calendar-number">9</span>
+                        </div>
+
+                        <div class="calendar-day">
+                            <span class="calendar-number">10</span>
+                        </div>
+
+                        <div class="calendar-day">
+                            <span class="calendar-number">11</span>
+                        </div>
+
+                        <div class="calendar-day">
+                            <span class="calendar-number">12</span>
+                        </div>
+
+                        <div class="calendar-day">
+                            <span class="calendar-number">13</span>
+                        </div>
+
+
+                        <div class="calendar-day">
+                            <span class="calendar-number">14</span>
+                        </div>
+
+                        <div class="calendar-day">
+                            <span class="calendar-number">15</span>
+                        </div>
+
+                        <div class="calendar-day">
+                            <span class="calendar-number">16</span>
+                        </div>
+
+                        <div class="calendar-day">
+                            <span class="calendar-number">17</span>
+                        </div>
+
+                        <div class="calendar-day">
+                            <span class="calendar-number">18</span>
+                        </div>
+
+                        <div class="calendar-day">
+                            <span class="calendar-number">19</span>
+                        </div>
+
+                        <div class="calendar-day">
+                            <span class="calendar-number">20</span>
+                        </div>
+
+
+                        <div class="calendar-day">
+                            <span class="calendar-number">21</span>
+                        </div>
+
+                        <div class="calendar-day">
+                            <span class="calendar-number">22</span>
+
+                            <div class="calendar-event event-warning">
+                                Overdue
+                            </div>
+                        </div>
+
+                        <div class="calendar-day">
+                            <span class="calendar-number">23</span>
+                        </div>
+
+                        <div class="calendar-day">
+                            <span class="calendar-number">24</span>
+                        </div>
+
+                        <div class="calendar-day">
+                            <span class="calendar-number">25</span>
+
+                            <div class="calendar-event">
+                                Binary Trees
+                            </div>
+                        </div>
+
+                        <div class="calendar-day">
+                            <span class="calendar-number">26</span>
+                        </div>
+
+                        <div class="calendar-day today">
+                            <span class="calendar-number">27</span>
+                        </div>
+
+
+                        <div class="calendar-day">
+                            <span class="calendar-number">28</span>
+
+                            <div class="calendar-event">
+                                Linked List
+                            </div>
+                        </div>
+
+                        <div class="calendar-day">
+                            <span class="calendar-number">29</span>
+                        </div>
+
+                        <div class="calendar-day">
+                            <span class="calendar-number">30</span>
+
+                            <div class="calendar-event">
+                                SQL Query
+                            </div>
+                        </div>
+
+                        <div class="calendar-day other-month">
+                            <span class="calendar-number">1</span>
+                        </div>
+
+                        <div class="calendar-day other-month">
+                            <span class="calendar-number">2</span>
+                        </div>
+
+                        <div class="calendar-day other-month">
+                            <span class="calendar-number">3</span>
+                        </div>
+
+                        <div class="calendar-day other-month">
+                            <span class="calendar-number">4</span>
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <aside class="card upcoming-card">
+
+                    <h3>Upcoming</h3>
+
+                    <div class="calendar-event-list">
+
+                        <div class="calendar-event-item">
+                            <strong>Sep 28 · Linked List Implementation</strong>
+                            <span>Data Structures · Dr. Sharma</span>
+                        </div>
+
+                        <div class="calendar-event-item">
+                            <strong>Sep 30 · SQL Query Assignment</strong>
+                            <span>DBMS · Prof. Mehta</span>
+                        </div>
+
+                        <div class="calendar-event-item">
+                            <strong>Oct 02 · Process Scheduling</strong>
+                            <span>Operating Systems · Dr. Patel</span>
+                        </div>
+
+                    </div>
+
+                </aside>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+</body>
+</html>

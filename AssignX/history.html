@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>History — AssignX</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <style>
+        .history-page {
+            padding: 30px 32px 50px;
+            max-width: 1050px;
+        }
+
+        .history-heading {
+            margin-bottom: 24px;
+        }
+
+        .history-heading h1 {
+            margin: 0;
+            font-size: 28px;
+            letter-spacing: -1px;
+        }
+
+        .history-heading p {
+            margin: 7px 0 0;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .history-layout {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 18px;
+        }
+
+        .history-card {
+            padding: 24px;
+        }
+
+        .history-title {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .history-title h2 {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .history-title p {
+            margin: 5px 0 0;
+            color: var(--muted);
+            font-size: 10px;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 28px;
+        }
+
+        .timeline::before {
+            content: "";
+
+            position: absolute;
+            left: 7px;
+            top: 5px;
+            bottom: 5px;
+
+            width: 1px;
+
+            background: rgba(255,255,255,0.1);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 28px;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+
+            left: -28px;
+            top: 2px;
+
+            width: 15px;
+            height: 15px;
+
+            background: #111;
+
+            border: 3px solid var(--green);
+
+            border-radius: 50%;
+
+            box-shadow: 0 0 12px rgba(118,185,0,0.25);
+        }
+
+        .timeline-item h3 {
+            margin: 0;
+            font-size: 12px;
+        }
+
+        .timeline-item p {
+            margin: 5px 0 0;
+            color: var(--muted);
+            font-size: 10px;
+            line-height: 1.6;
+        }
+
+        .timeline-date {
+            margin-top: 5px;
+            color: #555;
+            font-size: 9px;
+        }
+
+        .feedback-card {
+            padding: 22px;
+        }
+
+        .feedback-card h3 {
+            margin: 0 0 5px;
+            font-size: 14px;
+        }
+
+        .feedback-professor {
+            color: var(--muted);
+            font-size: 10px;
+        }
+
+        .score {
+            display: flex;
+            align-items: baseline;
+            gap: 4px;
+
+            margin: 22px 0;
+
+            color: var(--green);
+            font-size: 36px;
+            font-weight: 800;
+        }
+
+        .score span {
+            color: #666;
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        .feedback-comment {
+            padding: 14px;
+
+            color: #aaa;
+
+            background: rgba(255,255,255,0.025);
+
+            border: 1px solid var(--border);
+            border-radius: 9px;
+
+            font-size: 10px;
+            line-height: 1.7;
+        }
+
+        .feedback-meta {
+            margin-top: 18px;
+        }
+
+        .feedback-meta div {
+            display: flex;
+            justify-content: space-between;
+
+            padding: 9px 0;
+
+            border-bottom: 1px solid var(--border);
+
+            font-size: 10px;
+        }
+
+        .feedback-meta span {
+            color: #666;
+        }
+
+        @media (max-width: 850px) {
+            .history-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .history-page {
+                padding: 22px 16px 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="page-shell">
+
+    <aside class="sidebar">
+
+        <a href="dashboard.html" class="sidebar-brand">
+            <span class="sidebar-brand-mark">A</span>
+            <span class="sidebar-brand-text">AssignX</span>
+        </a>
+
+        <div class="sidebar-section-title">Workspace</div>
+
+        <nav class="sidebar-nav">
+
+            <a href="dashboard.html" class="sidebar-link">
+                <span class="nav-icon">⌂</span>
+                Dashboard
+            </a>
+
+            <a href="assignments.html" class="sidebar-link">
+                <span class="nav-icon">▣</span>
+                Assignments
+            </a>
+
+            <a href="calendar.html" class="sidebar-link">
+                <span class="nav-icon">□</span>
+                Calendar
+            </a>
+
+            <a href="history.html" class="sidebar-link active">
+                <span class="nav-icon">◷</span>
+                History
+            </a>
+
+            <a href="notifications.html" class="sidebar-link">
+                <span class="nav-icon">◉</span>
+                Notifications
+            </a>
+
+            <a href="profile.html" class="sidebar-link">
+                <span class="nav-icon">○</span>
+                Profile
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <main class="main-content">
+
+        <header class="top-header">
+
+            <div class="header-left">
+
+                <details class="mobile-nav">
+                    <summary class="header-icon-button">☰</summary>
+
+                    <div class="mobile-menu">
+                        <a href="dashboard.html">Dashboard</a>
+                        <a href="assignments.html">Assignments</a>
+                        <a href="calendar.html">Calendar</a>
+                        <a class="active" href="history.html">History</a>
+                        <a href="notifications.html">Notifications</a>
+                        <a href="profile.html">Profile</a>
+                    </div>
+                </details>
+
+                <div class="header-title">
+                    <h1>History</h1>
+                    <p>Track your submission activity.</p>
+                </div>
+
+            </div>
+
+            <div class="header-actions">
+                <div class="avatar">AK</div>
+            </div>
+
+        </header>
+
+
+        <section class="history-page">
+
+            <div class="history-heading">
+                <h1>Submission History</h1>
+                <p>Linked List Implementation · Data Structures</p>
+            </div>
+
+
+            <div class="history-layout">
+
+                <section class="card history-card">
+
+                    <div class="history-title">
+
+                        <div>
+                            <h2>Submission Timeline</h2>
+                            <p>Complete activity for this assignment</p>
+                        </div>
+
+                        <span class="badge badge-graded">
+                            Graded
+                        </span>
+
+                    </div>
+
+
+                    <div class="timeline">
+
+                        <div class="timeline-item">
+
+                            <div class="timeline-dot"></div>
+
+                            <h3>Assignment Submitted</h3>
+
+                            <p>
+                                Your assignment was successfully submitted.
+                            </p>
+
+                            <div class="timeline-date">
+                                Sep 27, 2026 · 10:42 AM
+                            </div>
+
+                        </div>
+
+
+                        <div class="timeline-item">
+
+                            <div class="timeline-dot"></div>
+
+                            <h3>File Uploaded</h3>
+
+                            <p>
+                                assignment.pdf · 2.4 MB
+                            </p>
+
+                            <div class="timeline-date">
+                                Sep 27, 2026 · 10:41 AM
+                            </div>
+
+                        </div>
+
+
+                        <div class="timeline-item">
+
+                            <div class="timeline-dot"></div>
+
+                            <h3>Under Review</h3>
+
+                            <p>
+                                Dr. Sharma started reviewing your submission.
+                            </p>
+
+                            <div class="timeline-date">
+                                Sep 28, 2026
+                            </div>
+
+                        </div>
+
+
+                        <div class="timeline-item">
+
+                            <div class="timeline-dot"></div>
+
+                            <h3>Graded · 92/100</h3>
+
+                            <p>
+                                Your submission has been graded.
+                            </p>
+
+                            <div class="timeline-date">
+                                Sep 30, 2026
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <aside class="card feedback-card">
+
+                    <h3>Professor Feedback</h3>
+
+                    <div class="feedback-professor">
+                        Dr. Sharma
+                    </div>
+
+                    <div class="score">
+                        92
+                        <span>/ 100</span>
+                    </div>
+
+                    <div class="feedback-comment">
+                        Excellent implementation. The linked list
+                        operations are clearly structured and the
+                        test cases cover the main scenarios.
+                    </div>
+
+                    <div class="feedback-meta">
+
+                        <div>
+                            <span>Grade</span>
+                            <strong>A</strong>
+                        </div>
+
+                        <div>
+                            <span>Submitted</span>
+                            <strong>Sep 27</strong>
+                        </div>
+
+                        <div>
+                            <span>Professor</span>
+                            <strong>Dr. Sharma</strong>
+                        </div>
+
+                    </div>
+
+                    <button class="btn btn-secondary" style="width:100%; margin-top:18px;">
+                        Download Feedback
+                    </button>
+
+                </aside>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+</body>
+</html>

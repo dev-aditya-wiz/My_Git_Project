@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard — AssignX</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+<div class="page-shell">
+
+    <aside class="sidebar">
+
+        <a href="dashboard.html" class="sidebar-brand">
+            <span class="sidebar-brand-mark">A</span>
+            <span class="sidebar-brand-text">AssignX</span>
+        </a>
+
+        <div class="sidebar-section-title">Workspace</div>
+
+        <nav class="sidebar-nav">
+
+            <a href="dashboard.html" class="sidebar-link active">
+                <span class="nav-icon">⌂</span>
+                Dashboard
+            </a>
+
+            <a href="assignments.html" class="sidebar-link">
+                <span class="nav-icon">▣</span>
+                Assignments
+            </a>
+
+            <a href="calendar.html" class="sidebar-link">
+                <span class="nav-icon">□</span>
+                Calendar
+            </a>
+
+            <a href="history.html" class="sidebar-link">
+                <span class="nav-icon">◷</span>
+                History
+            </a>
+
+            <a href="notifications.html" class="sidebar-link">
+                <span class="nav-icon">◉</span>
+                Notifications
+            </a>
+
+            <a href="profile.html" class="sidebar-link">
+                <span class="nav-icon">○</span>
+                Profile
+            </a>
+
+        </nav>
+
+        <div class="sidebar-spacer"></div>
+
+        <div class="sidebar-section-title">Support</div>
+
+        <nav class="sidebar-nav">
+            <a href="#" class="sidebar-link">
+                <span class="nav-icon">⚙</span>
+                Settings
+            </a>
+
+            <a href="#" class="sidebar-link">
+                <span class="nav-icon">?</span>
+                Help & Support
+            </a>
+        </nav>
+
+    </aside>
+
+
+    <main class="main-content">
+
+        <header class="top-header">
+
+            <div class="header-left">
+
+                <details class="mobile-nav">
+                    <summary class="header-icon-button">☰</summary>
+
+                    <div class="mobile-menu">
+                        <a class="active" href="dashboard.html">Dashboard</a>
+                        <a href="assignments.html">Assignments</a>
+                        <a href="calendar.html">Calendar</a>
+                        <a href="history.html">History</a>
+                        <a href="notifications.html">Notifications</a>
+                        <a href="profile.html">Profile</a>
+                    </div>
+                </details>
+
+                <div class="header-title">
+                    <h1>Dashboard</h1>
+                    <p>Stay on top of every deadline.</p>
+                </div>
+
+            </div>
+
+            <div class="header-actions">
+
+                <a href="assignments.html" class="header-icon-button">
+                    ⌕
+                </a>
+
+                <a href="notifications.html" class="header-icon-button">
+                    ◉
+                </a>
+
+                <div class="profile-mini">
+                    <div class="avatar">AK</div>
+
+                    <div class="profile-mini-info">
+                        <strong>Aditya Kumar</strong>
+                        <span>CSE · Semester 5</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <section class="dashboard-page">
+
+            <div class="welcome-section">
+
+                <div>
+                    <h1>Good morning, Aditya 👋</h1>
+                    <p>Here is what's happening with your assignments.</p>
+                </div>
+
+                <div class="welcome-actions">
+                    <a href="assignments.html" class="btn btn-secondary">
+                        View Assignments
+                    </a>
+
+                    <a href="calendar.html" class="btn btn-primary">
+                        View Calendar
+                    </a>
+                </div>
+
+            </div>
+
+
+            <section class="stats-grid">
+
+                <article class="card stat-card">
+
+                    <div class="stat-top">
+                        <span class="stat-label">Total Assignments</span>
+                        <div class="stat-icon">▣</div>
+                    </div>
+
+                    <div class="stat-value">24</div>
+
+                    <div class="stat-meta">
+                        <strong>+4</strong> this week
+                    </div>
+
+                </article>
+
+
+                <article class="card stat-card">
+
+                    <div class="stat-top">
+                        <span class="stat-label">Pending</span>
+                        <div class="stat-icon">◷</div>
+                    </div>
+
+                    <div class="stat-value">08</div>
+
+                    <div class="stat-meta">
+                        <strong>3</strong> due soon
+                    </div>
+
+                </article>
+
+
+                <article class="card stat-card">
+
+                    <div class="stat-top">
+                        <span class="stat-label">Submitted</span>
+                        <div class="stat-icon">✓</div>
+                    </div>
+
+                    <div class="stat-value">13</div>
+
+                    <div class="stat-meta">
+                        <strong>92%</strong> completion
+                    </div>
+
+                </article>
+
+
+                <article class="card stat-card">
+
+                    <div class="stat-top">
+                        <span class="stat-label">Overdue</span>
+                        <div class="stat-icon">!</div>
+                    </div>
+
+                    <div class="stat-value">03</div>
+
+                    <div class="stat-meta">
+                        <strong>Requires</strong> attention
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <div class="dashboard-grid">
+
+                <section class="card">
+
+                    <div class="card-header">
+
+                        <div>
+                            <h2>Upcoming Assignments</h2>
+                            <p>Your next deadlines</p>
+                        </div>
+
+                        <a href="assignments.html" class="btn btn-secondary">
+                            View all
+                        </a>
+
+                    </div>
+
+
+                    <div class="assignment-list">
+
+                        <div class="assignment-row">
+
+                            <div class="assignment-main">
+                                <span class="assignment-subject">
+                                    Data Structures
+                                </span>
+
+                                <h3 class="assignment-name">
+                                    Linked List Implementation
+                                </h3>
+
+                                <div class="assignment-professor">
+                                    Dr. Sharma · Computer Science
+                                </div>
+                            </div>
+
+                            <div class="assignment-deadline">
+                                <strong>Sep 28, 2026</strong>
+                                <span>2 days remaining</span>
+                            </div>
+
+                            <a href="assignment-details.html" class="btn btn-primary">
+                                Submit
+                            </a>
+
+                        </div>
+
+
+                        <div class="assignment-row">
+
+                            <div class="assignment-main">
+                                <span class="assignment-subject">
+                                    DBMS
+                                </span>
+
+                                <h3 class="assignment-name">
+                                    SQL Query Assignment
+                                </h3>
+
+                                <div class="assignment-professor">
+                                    Prof. Mehta
+                                </div>
+                            </div>
+
+                            <div class="assignment-deadline">
+                                <strong>Sep 30, 2026</strong>
+                                <span>4 days remaining</span>
+                            </div>
+
+                            <a href="assignment-details.html" class="btn btn-secondary">
+                                View
+                            </a>
+
+                        </div>
+
+
+                        <div class="assignment-row">
+
+                            <div class="assignment-main">
+                                <span class="assignment-subject">
+                                    Operating Systems
+                                </span>
+
+                                <h3 class="assignment-name">
+                                    Process Scheduling
+                                </h3>
+
+                                <div class="assignment-professor">
+                                    Dr. Patel
+                                </div>
+                            </div>
+
+                            <div class="assignment-deadline">
+                                <strong>Oct 02, 2026</strong>
+                                <span>6 days remaining</span>
+                            </div>
+
+                            <a href="assignment-details.html" class="btn btn-secondary">
+                                View
+                            </a>
+
+                        </div>
+
+
+                        <div class="assignment-row">
+
+                            <div class="assignment-main">
+                                <span class="assignment-subject">
+                                    Web Development
+                                </span>
+
+                                <h3 class="assignment-name">
+                                    Responsive Portfolio
+                                </h3>
+
+                                <div class="assignment-professor">
+                                    Prof. Shah
+                                </div>
+                            </div>
+
+                            <div class="assignment-deadline">
+                                <strong>Oct 05, 2026</strong>
+                                <span>9 days remaining</span>
+                            </div>
+
+                            <a href="assignment-details.html" class="btn btn-secondary">
+                                View
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <div>
+
+                    <section class="card progress-section">
+
+                        <div class="progress-header">
+                            <h3>Completion Rate</h3>
+                            <span class="progress-percent">92%</span>
+                        </div>
+
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+
+                        <div class="progress-stats">
+
+                            <div class="progress-stat">
+                                <strong>13</strong>
+                                <span>Submitted</span>
+                            </div>
+
+                            <div class="progress-stat">
+                                <strong>08</strong>
+                                <span>Pending</span>
+                            </div>
+
+                            <div class="progress-stat">
+                                <strong>03</strong>
+                                <span>Overdue</span>
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <section class="card" style="margin-top:18px;">
+
+                        <div class="card-header">
+
+                            <div>
+                                <h2>Upcoming Deadlines</h2>
+                                <p>Next 3 deadlines</p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="deadline-list">
+
+                            <div class="deadline-item">
+
+                                <div class="deadline-date">
+                                    <strong>28</strong>
+                                    <span>Sep</span>
+                                </div>
+
+                                <div class="deadline-info">
+                                    <strong>Linked List Implementation</strong>
+                                    <span>Data Structures</span>
+                                </div>
+
+                            </div>
+
+
+                            <div class="deadline-item">
+
+                                <div class="deadline-date">
+                                    <strong>30</strong>
+                                    <span>Sep</span>
+                                </div>
+
+                                <div class="deadline-info">
+                                    <strong>SQL Query Assignment</strong>
+                                    <span>DBMS</span>
+                                </div>
+
+                            </div>
+
+
+                            <div class="deadline-item">
+
+                                <div class="deadline-date">
+                                    <strong>02</strong>
+                                    <span>Oct</span>
+                                </div>
+
+                                <div class="deadline-info">
+                                    <strong>Process Scheduling</strong>
+                                    <span>Operating Systems</span>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+</body>
+</html>

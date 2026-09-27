@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Assignments — AssignX</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <style>
+        .page-content {
+            padding: 30px 32px 50px;
+        }
+
+        .page-heading {
+            margin-bottom: 25px;
+        }
+
+        .page-heading h1 {
+            margin: 0;
+            font-size: 28px;
+            letter-spacing: -1px;
+        }
+
+        .page-heading p {
+            margin: 7px 0 0;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-bottom: 18px;
+        }
+
+        .toolbar-left {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            flex: 1;
+        }
+
+        .toolbar-left .search-box {
+            min-width: 260px;
+            flex: 1;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        .assignment-table {
+            width: 100%;
+            min-width: 760px;
+            border-collapse: collapse;
+        }
+
+        .assignment-table th {
+            padding: 14px 18px;
+            color: #666;
+            background: rgba(255,255,255,0.02);
+            border-bottom: 1px solid var(--border);
+            font-size: 10px;
+            font-weight: 700;
+            text-align: left;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        .assignment-table td {
+            padding: 17px 18px;
+            border-bottom: 1px solid var(--border);
+            font-size: 11px;
+        }
+
+        .assignment-table tbody tr {
+            transition: background 0.2s ease;
+        }
+
+        .assignment-table tbody tr:hover {
+            background: rgba(118,185,0,0.025);
+        }
+
+        .table-title {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .table-title strong {
+            color: white;
+            font-size: 12px;
+        }
+
+        .table-title span {
+            color: var(--muted);
+            font-size: 9px;
+        }
+
+        .deadline-danger {
+            color: #f87171;
+        }
+
+        .deadline-warning {
+            color: #fbbf24;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="page-shell">
+
+    <aside class="sidebar">
+
+        <a href="dashboard.html" class="sidebar-brand">
+            <span class="sidebar-brand-mark">A</span>
+            <span class="sidebar-brand-text">AssignX</span>
+        </a>
+
+        <div class="sidebar-section-title">Workspace</div>
+
+        <nav class="sidebar-nav">
+
+            <a href="dashboard.html" class="sidebar-link">
+                <span class="nav-icon">⌂</span>
+                Dashboard
+            </a>
+
+            <a href="assignments.html" class="sidebar-link active">
+                <span class="nav-icon">▣</span>
+                Assignments
+            </a>
+
+            <a href="calendar.html" class="sidebar-link">
+                <span class="nav-icon">□</span>
+                Calendar
+            </a>
+
+            <a href="history.html" class="sidebar-link">
+                <span class="nav-icon">◷</span>
+                History
+            </a>
+
+            <a href="notifications.html" class="sidebar-link">
+                <span class="nav-icon">◉</span>
+                Notifications
+            </a>
+
+            <a href="profile.html" class="sidebar-link">
+                <span class="nav-icon">○</span>
+                Profile
+            </a>
+
+        </nav>
+
+        <div class="sidebar-spacer"></div>
+
+        <div class="sidebar-section-title">Support</div>
+
+        <nav class="sidebar-nav">
+            <a href="#" class="sidebar-link">
+                <span class="nav-icon">⚙</span>
+                Settings
+            </a>
+
+            <a href="#" class="sidebar-link">
+                <span class="nav-icon">?</span>
+                Help & Support
+            </a>
+        </nav>
+
+    </aside>
+
+
+    <main class="main-content">
+
+        <header class="top-header">
+
+            <div class="header-left">
+
+                <details class="mobile-nav">
+                    <summary class="header-icon-button">☰</summary>
+
+                    <div class="mobile-menu">
+                        <a href="dashboard.html">Dashboard</a>
+                        <a class="active" href="assignments.html">Assignments</a>
+                        <a href="calendar.html">Calendar</a>
+                        <a href="history.html">History</a>
+                        <a href="notifications.html">Notifications</a>
+                        <a href="profile.html">Profile</a>
+                    </div>
+                </details>
+
+                <div class="header-title">
+                    <h1>Assignments</h1>
+                    <p>Manage everything in one place.</p>
+                </div>
+
+            </div>
+
+            <div class="header-actions">
+
+                <a href="notifications.html" class="header-icon-button">
+                    ◉
+                </a>
+
+                <div class="profile-mini">
+                    <div class="avatar">AK</div>
+
+                    <div class="profile-mini-info">
+                        <strong>Aditya Kumar</strong>
+                        <span>CSE · Semester 5</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <section class="page-content">
+
+            <div class="page-heading">
+                <h1>All Assignments</h1>
+                <p>24 assignments across all your subjects.</p>
+            </div>
+
+
+            <div class="toolbar">
+
+                <div class="toolbar-left">
+
+                    <div class="search-box">
+                        <span class="search-icon">⌕</span>
+                        <input
+                            class="input"
+                            type="search"
+                            placeholder="Search assignments..."
+                        >
+                    </div>
+
+                    <select class="select filter-control">
+                        <option>All Subjects</option>
+                        <option>Computer Science</option>
+                        <option>DBMS</option>
+                        <option>Operating Systems</option>
+                        <option>Web Development</option>
+                        <option>Mathematics</option>
+                    </select>
+
+                    <select class="select filter-control">
+                        <option>All Status</option>
+                        <option>Pending</option>
+                        <option>Submitted</option>
+                        <option>Due Soon</option>
+                        <option>Overdue</option>
+                        <option>Graded</option>
+                    </select>
+
+                </div>
+
+                <select class="select" style="width:150px;">
+                    <option>Sort: Deadline</option>
+                    <option>Sort: Newest</option>
+                    <option>Sort: Oldest</option>
+                </select>
+
+            </div>
+
+
+            <section class="card">
+
+                <div class="table-wrapper">
+
+                    <table class="assignment-table">
+
+                        <thead>
+                            <tr>
+                                <th>Assignment</th>
+                                <th>Subject</th>
+                                <th>Professor</th>
+                                <th>Deadline</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>
+                                    <div class="table-title">
+                                        <strong>Linked List Implementation</strong>
+                                        <span>Programming assignment</span>
+                                    </div>
+                                </td>
+
+                                <td>Data Structures</td>
+                                <td>Dr. Sharma</td>
+
+                                <td class="deadline-warning">
+                                    Sep 28, 2026
+                                </td>
+
+                                <td>
+                                    <span class="badge badge-due">
+                                        Due Soon
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <a
+                                        href="assignment-details.html"
+                                        class="btn btn-primary"
+                                    >
+                                        Submit
+                                    </a>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    <div class="table-title">
+                                        <strong>SQL Query Assignment</strong>
+                                        <span>Database queries</span>
+                                    </div>
+                                </td>
+
+                                <td>DBMS</td>
+                                <td>Prof. Mehta</td>
+
+                                <td>
+                                    Sep 30, 2026
+                                </td>
+
+                                <td>
+                                    <span class="badge badge-pending">
+                                        Pending
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <a href="assignment-details.html" class="btn btn-secondary">
+                                        View
+                                    </a>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    <div class="table-title">
+                                        <strong>Process Scheduling</strong>
+                                        <span>CPU scheduling algorithms</span>
+                                    </div>
+                                </td>
+
+                                <td>Operating Systems</td>
+                                <td>Dr. Patel</td>
+
+                                <td>
+                                    Oct 02, 2026
+                                </td>
+
+                                <td>
+                                    <span class="badge badge-pending">
+                                        Pending
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <a href="assignment-details.html" class="btn btn-secondary">
+                                        View
+                                    </a>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    <div class="table-title">
+                                        <strong>Responsive Portfolio</strong>
+                                        <span>Responsive web design</span>
+                                    </div>
+                                </td>
+
+                                <td>Web Development</td>
+                                <td>Prof. Shah</td>
+
+                                <td>
+                                    Oct 05, 2026
+                                </td>
+
+                                <td>
+                                    <span class="badge badge-pending">
+                                        Pending
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <a href="assignment-details.html" class="btn btn-secondary">
+                                        View
+                                    </a>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    <div class="table-title">
+                                        <strong>Binary Search Trees</strong>
+                                        <span>Tree traversal implementation</span>
+                                    </div>
+                                </td>
+
+                                <td>Data Structures</td>
+                                <td>Dr. Sharma</td>
+
+                                <td>
+                                    Sep 25, 2026
+                                </td>
+
+                                <td>
+                                    <span class="badge badge-submitted">
+                                        Submitted
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <a href="history.html" class="btn btn-secondary">
+                                        History
+                                    </a>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    <div class="table-title">
+                                        <strong>Normalization Exercise</strong>
+                                        <span>1NF, 2NF and 3NF</span>
+                                    </div>
+                                </td>
+
+                                <td>DBMS</td>
+                                <td>Prof. Mehta</td>
+
+                                <td class="deadline-danger">
+                                    Sep 22, 2026
+                                </td>
+
+                                <td>
+                                    <span class="badge badge-overdue">
+                                        Overdue
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <a href="assignment-details.html" class="btn btn-danger">
+                                        Resolve
+                                    </a>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    <div class="table-title">
+                                        <strong>Memory Management</strong>
+                                        <span>Page replacement algorithms</span>
+                                    </div>
+                                </td>
+
+                                <td>Operating Systems</td>
+                                <td>Dr. Patel</td>
+
+                                <td>
+                                    Sep 20, 2026
+                                </td>
+
+                                <td>
+                                    <span class="badge badge-graded">
+                                        Graded
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <a href="history.html" class="btn btn-secondary">
+                                        View
+                                    </a>
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+</div>
+
+</body>
+</html>

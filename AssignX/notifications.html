@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Notifications — AssignX</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <style>
+        .notifications-page {
+            padding: 30px 32px 50px;
+            max-width: 900px;
+        }
+
+        .notifications-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 24px;
+        }
+
+        .notifications-heading h1 {
+            margin: 0;
+            font-size: 28px;
+            letter-spacing: -1px;
+        }
+
+        .notifications-heading p {
+            margin: 7px 0 0;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .notification-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .notification {
+            display: flex;
+            gap: 15px;
+
+            padding: 20px 22px;
+
+            border-bottom: 1px solid var(--border);
+
+            transition: background 0.2s ease;
+        }
+
+        .notification:last-child {
+            border-bottom: 0;
+        }
+
+        .notification:hover {
+            background: rgba(118,185,0,0.025);
+        }
+
+        .notification-icon {
+            width: 40px;
+            height: 40px;
+            flex-shrink: 0;
+
+            display: grid;
+            place-items: center;
+
+            color: var(--green);
+
+            background: rgba(118,185,0,0.08);
+            border: 1px solid rgba(118,185,0,0.15);
+
+            border-radius: 10px;
+        }
+
+        .notification-icon.warning {
+            color: #fbbf24;
+            background: rgba(245,158,11,0.08);
+            border-color: rgba(245,158,11,0.15);
+        }
+
+        .notification-icon.blue {
+            color: #60a5fa;
+            background: rgba(59,130,246,0.08);
+            border-color: rgba(59,130,246,0.15);
+        }
+
+        .notification-content {
+            flex: 1;
+        }
+
+        .notification-content h3 {
+            margin: 0;
+            font-size: 12px;
+        }
+
+        .notification-content p {
+            margin: 5px 0 7px;
+
+            color: var(--muted);
+
+            font-size: 10px;
+            line-height: 1.6;
+        }
+
+        .notification-time {
+            color: #555;
+            font-size: 9px;
+        }
+
+        .unread-dot {
+            width: 7px;
+            height: 7px;
+
+            margin-top: 5px;
+
+            background: var(--green);
+
+            border-radius: 50%;
+
+            box-shadow: 0 0 8px rgba(118,185,0,0.6);
+        }
+
+        @media (max-width: 600px) {
+            .notifications-page {
+                padding: 22px 16px 40px;
+            }
+
+            .notifications-heading {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="page-shell">
+
+    <aside class="sidebar">
+
+        <a href="dashboard.html" class="sidebar-brand">
+            <span class="sidebar-brand-mark">A</span>
+            <span class="sidebar-brand-text">AssignX</span>
+        </a>
+
+        <div class="sidebar-section-title">Workspace</div>
+
+        <nav class="sidebar-nav">
+
+            <a href="dashboard.html" class="sidebar-link">
+                <span class="nav-icon">⌂</span>
+                Dashboard
+            </a>
+
+            <a href="assignments.html" class="sidebar-link">
+                <span class="nav-icon">▣</span>
+                Assignments
+            </a>
+
+            <a href="calendar.html" class="sidebar-link">
+                <span class="nav-icon">□</span>
+                Calendar
+            </a>
+
+            <a href="history.html" class="sidebar-link">
+                <span class="nav-icon">◷</span>
+                History
+            </a>
+
+            <a href="notifications.html" class="sidebar-link active">
+                <span class="nav-icon">◉</span>
+                Notifications
+            </a>
+
+            <a href="profile.html" class="sidebar-link">
+                <span class="nav-icon">○</span>
+                Profile
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <main class="main-content">
+
+        <header class="top-header">
+
+            <div class="header-left">
+
+                <details class="mobile-nav">
+                    <summary class="header-icon-button">☰</summary>
+
+                    <div class="mobile-menu">
+                        <a href="dashboard.html">Dashboard</a>
+                        <a href="assignments.html">Assignments</a>
+                        <a href="calendar.html">Calendar</a>
+                        <a href="history.html">History</a>
+                        <a class="active" href="notifications.html">Notifications</a>
+                        <a href="profile.html">Profile</a>
+                    </div>
+                </details>
+
+                <div class="header-title">
+                    <h1>Notifications</h1>
+                    <p>Important updates about your assignments.</p>
+                </div>
+
+            </div>
+
+            <div class="header-actions">
+                <div class="avatar">AK</div>
+            </div>
+
+        </header>
+
+
+        <section class="notifications-page">
+
+            <div class="notifications-heading">
+
+                <div>
+                    <h1>Notifications</h1>
+                    <p>3 unread notifications</p>
+                </div>
+
+                <button class="btn btn-secondary">
+                    Mark all as read
+                </button>
+
+            </div>
+
+
+            <section class="card">
+
+                <div class="notification-list">
+
+                    <article class="notification">
+
+                        <div class="notification-icon warning">
+                            !
+                        </div>
+
+                        <div class="notification-content">
+
+                            <h3>Assignment Due Tomorrow</h3>
+
+                            <p>
+                                Linked List Implementation is due on
+                                September 28, 2026 at 11:59 PM.
+                            </p>
+
+                            <span class="notification-time">
+                                2 hours ago
+                            </span>
+
+                        </div>
+
+                        <div class="unread-dot"></div>
+
+                    </article>
+
+
+                    <article class="notification">
+
+                        <div class="notification-icon">
+                            ✓
+                        </div>
+
+                        <div class="notification-content">
+
+                            <h3>Assignment Graded</h3>
+
+                            <p>
+                                Your Binary Search Trees assignment
+                                has been graded. You received 92/100.
+                            </p>
+
+                            <span class="notification-time">
+                                Yesterday
+                            </span>
+
+                        </div>
+
+                        <div class="unread-dot"></div>
+
+                    </article>
+
+
+                    <article class="notification">
+
+                        <div class="notification-icon blue">
+                            +
+                        </div>
+
+                        <div class="notification-content">
+
+                            <h3>New Assignment</h3>
+
+                            <p>
+                                Prof. Shah added a new Responsive
+                                Portfolio assignment.
+                            </p>
+
+                            <span class="notification-time">
+                                Yesterday
+                            </span>
+
+                        </div>
+
+                        <div class="unread-dot"></div>
+
+                    </article>
+
+
+                    <article class="notification">
+
+                        <div class="notification-icon">
+                            ✓
+                        </div>
+
+                        <div class="notification-content">
+
+                            <h3>Submission Successful</h3>
+
+                            <p>
+                                Your Database Normalization assignment
+                                was successfully submitted.
+                            </p>
+
+                            <span class="notification-time">
+                                3 days ago
+                            </span>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+</div>
+
+</body>
+</html>

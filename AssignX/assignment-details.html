@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Assignment Details — AssignX</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <style>
+        .details-page {
+            padding: 30px 32px 50px;
+            max-width: 1100px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+
+            margin-bottom: 25px;
+
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .back-link:hover {
+            color: var(--green);
+        }
+
+        .details-header {
+            padding: 28px;
+            margin-bottom: 18px;
+        }
+
+        .details-header-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .subject-label {
+            color: var(--green);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .details-header h1 {
+            margin: 8px 0;
+            font-size: 30px;
+            letter-spacing: -1px;
+        }
+
+        .professor {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 300px;
+            gap: 18px;
+        }
+
+        .detail-section {
+            padding: 24px;
+        }
+
+        .detail-section + .detail-section {
+            border-top: 1px solid var(--border);
+        }
+
+        .detail-section h2 {
+            margin: 0 0 12px;
+            font-size: 15px;
+        }
+
+        .detail-section p {
+            margin: 0;
+            color: #a7a7a7;
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        .requirements {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .requirement {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            padding: 12px;
+
+            background: rgba(255,255,255,0.025);
+            border: 1px solid var(--border);
+            border-radius: 9px;
+
+            font-size: 11px;
+        }
+
+        .requirement-icon {
+            color: var(--green);
+        }
+
+        .info-list {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .info-item span {
+            display: block;
+            margin-bottom: 5px;
+            color: #666;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.7px;
+        }
+
+        .info-item strong {
+            font-size: 13px;
+        }
+
+        .submit-card {
+            padding: 22px;
+        }
+
+        .submit-card h3 {
+            margin: 0 0 7px;
+            font-size: 15px;
+        }
+
+        .submit-card p {
+            margin: 0 0 18px;
+            color: var(--muted);
+            font-size: 11px;
+            line-height: 1.6;
+        }
+
+        .submit-card .btn {
+            width: 100%;
+        }
+
+        @media (max-width: 800px) {
+            .details-page {
+                padding: 22px 16px 40px;
+            }
+
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .details-header-top {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="page-shell">
+
+    <aside class="sidebar">
+
+        <a href="dashboard.html" class="sidebar-brand">
+            <span class="sidebar-brand-mark">A</span>
+            <span class="sidebar-brand-text">AssignX</span>
+        </a>
+
+        <div class="sidebar-section-title">Workspace</div>
+
+        <nav class="sidebar-nav">
+
+            <a href="dashboard.html" class="sidebar-link">
+                <span class="nav-icon">⌂</span>
+                Dashboard
+            </a>
+
+            <a href="assignments.html" class="sidebar-link active">
+                <span class="nav-icon">▣</span>
+                Assignments
+            </a>
+
+            <a href="calendar.html" class="sidebar-link">
+                <span class="nav-icon">□</span>
+                Calendar
+            </a>
+
+            <a href="history.html" class="sidebar-link">
+                <span class="nav-icon">◷</span>
+                History
+            </a>
+
+            <a href="notifications.html" class="sidebar-link">
+                <span class="nav-icon">◉</span>
+                Notifications
+            </a>
+
+            <a href="profile.html" class="sidebar-link">
+                <span class="nav-icon">○</span>
+                Profile
+            </a>
+
+        </nav>
+
+        <div class="sidebar-spacer"></div>
+
+        <nav class="sidebar-nav">
+            <a href="#" class="sidebar-link">
+                <span class="nav-icon">⚙</span>
+                Settings
+            </a>
+
+            <a href="#" class="sidebar-link">
+                <span class="nav-icon">?</span>
+                Help & Support
+            </a>
+        </nav>
+
+    </aside>
+
+
+    <main class="main-content">
+
+        <header class="top-header">
+
+            <div class="header-left">
+
+                <details class="mobile-nav">
+                    <summary class="header-icon-button">☰</summary>
+
+                    <div class="mobile-menu">
+                        <a href="dashboard.html">Dashboard</a>
+                        <a class="active" href="assignments.html">Assignments</a>
+                        <a href="calendar.html">Calendar</a>
+                        <a href="history.html">History</a>
+                        <a href="notifications.html">Notifications</a>
+                        <a href="profile.html">Profile</a>
+                    </div>
+                </details>
+
+                <div class="header-title">
+                    <h1>Assignment Details</h1>
+                    <p>Review requirements before submitting.</p>
+                </div>
+
+            </div>
+
+            <div class="header-actions">
+                <a href="notifications.html" class="header-icon-button">◉</a>
+                <div class="avatar">AK</div>
+            </div>
+
+        </header>
+
+
+        <section class="details-page">
+
+            <a href="assignments.html" class="back-link">
+                ← Back to Assignments
+            </a>
+
+
+            <section class="card details-header">
+
+                <div class="details-header-top">
+
+                    <div>
+                        <div class="subject-label">
+                            Data Structures
+                        </div>
+
+                        <h1>Linked List Implementation</h1>
+
+                        <div class="professor">
+                            Dr. Sharma · Computer Science
+                        </div>
+                    </div>
+
+                    <span class="badge badge-due">
+                        Due Soon
+                    </span>
+
+                </div>
+
+            </section>
+
+
+            <div class="details-grid">
+
+                <div>
+
+                    <section class="card detail-section">
+
+                        <h2>Assignment Description</h2>
+
+                        <p>
+                            Implement a complete singly linked list data structure
+                            with insertion, deletion, searching and traversal
+                            operations. Your implementation should be clean,
+                            modular and properly documented.
+                        </p>
+
+                    </section>
+
+
+                    <section class="card detail-section">
+
+                        <h2>Requirements</h2>
+
+                        <div class="requirements">
+
+                            <div class="requirement">
+                                <span class="requirement-icon">✓</span>
+                                Source code
+                            </div>
+
+                            <div class="requirement">
+                                <span class="requirement-icon">✓</span>
+                                Documentation
+                            </div>
+
+                            <div class="requirement">
+                                <span class="requirement-icon">✓</span>
+                                Test cases
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                </div>
+
+
+                <div>
+
+                    <section class="card submit-card">
+
+                        <h3>Ready to submit?</h3>
+
+                        <p>
+                            Make sure your source code and documentation
+                            are included before submitting.
+                        </p>
+
+                        <a href="submit.html" class="btn btn-primary">
+                            Submit Assignment
+                        </a>
+
+                    </section>
+
+
+                    <section class="card detail-section" style="margin-top:18px;">
+
+                        <div class="info-list">
+
+                            <div class="info-item">
+                                <span>Deadline</span>
+                                <strong>
+                                    September 28, 2026<br>
+                                    11:59 PM
+                                </strong>
+                            </div>
+
+                            <div class="info-item">
+                                <span>Maximum Marks</span>
+                                <strong>100</strong>
+                            </div>
+
+                            <div class="info-item">
+                                <span>Subject</span>
+                                <strong>Data Structures</strong>
+                            </div>
+
+                            <div class="info-item">
+                                <span>Professor</span>
+                                <strong>Dr. Sharma</strong>
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+</body>
+</html>
